@@ -15,6 +15,7 @@ gem 'jquery-rails', '~> 4.3.5'
 gem 'devise', '~> 4.7.1'
 gem 'twitter-bootstrap-rails', '~> 3.2.2'
 gem 'devise-bootstrap-views', '~> 1.1.0'
+gem 'saml_idp'
 
 group :development, :test do
   gem 'pry'
