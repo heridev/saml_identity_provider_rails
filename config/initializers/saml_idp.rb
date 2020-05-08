@@ -113,11 +113,15 @@ jPVIhctMaNCEhdlcNBgh0r/U
     end
   }
 
+  sp_metadata_url = ENV['PROVIDER_METADATA_URL'] || 'https://localhost:3030/sp/saml/metadata'
+  idp_cert_fingerprint = ENV['IDP_CERT_FINGERPRINT'] || 'E4:FC:60:40:03:A2:33:9D:AA:9D:50:59:F2:04:F0:3C:88:62:3B:F1:EB:D8:4C:FF:9C:D1:93:07:03:F7:C9:74'
+  sp_saml_auth = ENV['SP_SSO_AUTH_TARGET_URL'] || 'https://localhost:3030/sp/saml/auth'
+
   service_provider_list = {
-    'https://localhost:3000/users/saml/metadata' => {
-      fingerprint: 'E4:FC:60:40:03:A2:33:9D:AA:9D:50:59:F2:04:F0:3C:88:62:3B:F1:EB:D8:4C:FF:9C:D1:93:07:03:F7:C9:74',
-      metadata_url: 'https://localhost:3000/users/saml/metadata',
-      response_hosts: ['https://localhost:3000/users/saml/auth']
+    sp_metadata_url => {
+      fingerprint: idp_cert_fingerprint,
+      metadata_url: sp_metadata_url,
+      response_hosts: [sp_saml_auth]
     }
   }
 

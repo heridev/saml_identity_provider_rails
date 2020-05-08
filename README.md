@@ -9,12 +9,12 @@ https://gist.github.com/heridev/25f842d1e5b87870d987ee128f9dbee2
 3. bundle install
 4. rake db:create
 5. rake db:migrate
-6. rails s -b 'ssl://localhost:3030?key=newCertWithPasswordLocahostKey.key&cert=newCertWithPasswordLocahostCert.crt'
+6. rails s -b 'ssl://localhost:3000?key=newCertWithPasswordLocahostKey.key&cert=newCertWithPasswordLocahostCert.crt'
 
 Now, you need to visit this URL and register a new account:
-https://localhost:3030/users/sign_up
+https://localhost:3000/users/sign_up
 
-This Identity Provider server configuration is based on the workflow called:
+The current `Identity Provider` server configuration is based on the SSO flow called:
 *Service provider-initiated flow*
 
 Once you run both servers including the Service Provider rails server:
@@ -22,7 +22,7 @@ https://github.com/heridev/saml_service_provider_in_rails
 
 You can visit the service provider URL and request a private resource:
 ```
-https://localhost:3000/users/saml/sign_in
+https://localhost:3030/sp/saml/private_resource
 ```
 
 If you follow both repository instructions after requesting that URL, you should see something like this in the Identity Provider:
@@ -35,7 +35,7 @@ So, now you can easily include that url in an iframe in your site and render wid
 ```
 <iframe width="560"
 	      height="315"
-	      src="https://localhost:3000/users/saml/sign_in"
+	      src="https://localhost:3030/sp/saml/private_resource"
 	      frameborder="0"
 	      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen>
